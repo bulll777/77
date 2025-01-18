@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Определение большего и меньшего числа</title>
+<style>
+       body {
+           font-family: Arial, sans-serif;
+           margin: 20px;
+       }
+       .container {
+           max-width: 400px;
+           margin: 0 auto;
+       }
+       input[type="number"] {
+           width: 100%;
+           padding: 10px;
+           margin: 10px 0;
+           box-sizing: border-box;
+       }
+       button {
+           width: 100%;
+           padding: 10px;
+           background-color: #4CAF50;
+           color: white;
+           border: none;
+           cursor: pointer;
+       }
+       button:hover {
+           background-color: #45a049;
+       }
+       .result {
+           margin-top: 20px;
+           padding: 10px;
+           background-color: #f1f1f1;
+           border: 1px solid #ddd;
+       }
+</style>
+</head>
+<body>
+<div class="container">
+<h2>Определение большего и меньшего числа</h2>
+<label for="num1">Введите первое число:</label>
+<input type="number" id="num1" step="any" placeholder="Введите число">
+<label for="num2">Введите второе число:</label>
+<input type="number" id="num2" step="any" placeholder="Введите число">
+<button onclick="compareNumbers()">Сравнить</button>
+<div class="result" id="result"></div>
+</div>
+<script>
+   function compareNumbers() {
+       // Получаем значения из input
+       const num1 = parseFloat(document.getElementById('num1').value);
+       const num2 = parseFloat(document.getElementById('num2').value);
+       // Проверяем, что числа введены и они различны
+       if (isNaN(num1) || isNaN(num2)) {
+           document.getElementById('result').innerText = "Пожалуйста, введите оба числа.";
+           return;
+       }
+       if (num1 === num2) {
+           document.getElementById('result').innerText = "Числа равны.";
+           return;
+       }
+       // Определяем большее и меньшее число
+       const greater = num1 > num2 ? num1 : num2;
+       const smaller = num1 < num2 ? num1 : num2;
+       // Выводим результат
+       document.getElementById('result').innerText = `Большее число: ${greater}\\nМеньшее число: ${smaller}`;
+   }
+</script>
+</body>
+</html>
